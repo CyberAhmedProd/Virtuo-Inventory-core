@@ -1,6 +1,6 @@
-﻿using AuthDemo.Application.Interfaces;
+﻿using VirtuoInventory.Application.Interfaces;
 
-namespace AuthDemo.Infrastructure
+namespace VirtuoInventory.Infrastructure
 {
     public class UnitOfWork : IUnitOfWork
     {

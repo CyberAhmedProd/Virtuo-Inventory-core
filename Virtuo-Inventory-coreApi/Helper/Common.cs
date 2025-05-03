@@ -1,10 +1,11 @@
-﻿using AuthDemo.Core.Entities;
+﻿using VirtuoInventory.Core.Entities;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using System.Security.Cryptography;
 
-namespace AuthDemoApi.Helper
+namespace VirtuoInventory.Api.Helper
 {
     public static class Common
     {
@@ -35,6 +36,34 @@ namespace AuthDemoApi.Helper
             var token = tokenHandler.CreateToken(tokenDescriptor);
 
             return tokenHandler.WriteToken(token);
+        }
+
+
+        /// <summary>
+        /// Hash a password using HMACSHA256.
+        /// </summary>
+        /// <param name="password">The plain text password.</param>
+        /// <returns>The hashed password as a Base64 string.</returns>
+        public static string HashPassword(string password)
+        {
+            using (var hmac = new HMACSHA256())
+            {
+                var passwordBytes = Encoding.UTF8.GetBytes(password);
+                var hashedBytes = hmac.ComputeHash(passwordBytes);
+                return Convert.ToBase64String(hashedBytes);
+            }
+        }
+
+        /// <summary>
+        /// Verify if a plain text password matches a hashed password.
+        /// </summary>
+        /// <param name="password">The plain text password.</param>
+        /// <param name="hashedPassword">The hashed password to compare against.</param>
+        /// <returns>True if the password matches the hash, otherwise false.</returns>
+        public static bool VerifyHashedPassword(string password, string hashedPassword)
+        {
+            var hashedInputPassword = HashPassword(password);
+            return hashedInputPassword == hashedPassword;
         }
 
         #endregion

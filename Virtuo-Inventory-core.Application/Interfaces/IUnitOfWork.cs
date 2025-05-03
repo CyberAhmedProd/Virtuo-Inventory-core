@@ -1,4 +1,4 @@
-﻿namespace AuthDemo.Application.Interfaces
+﻿namespace VirtuoInventory.Application.Interfaces
 {
     public interface IUnitOfWork
     {

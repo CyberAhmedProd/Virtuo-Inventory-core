@@ -1,8 +1,8 @@
-﻿using AuthDemo.Core.Entities;
+﻿using VirtuoInventory.Core.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace AuthDemoApi.Helper
+namespace VirtuoInventory.Api.Helper
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class AuthorizeAttribute : Attribute, IAuthorizationFilter

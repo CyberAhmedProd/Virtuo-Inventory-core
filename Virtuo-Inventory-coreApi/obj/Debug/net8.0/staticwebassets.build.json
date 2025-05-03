@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "9f/rnEBI5HQXippXRuwyBvSIwkBv6NCseYR0nBWhid0=",
-  "Source": "Virtuo-Inventory-core.Api",
-  "BasePath": "_content/Virtuo-Inventory-core.Api",
+  "Hash": "st2gcJzp2uQk4/s3uMaFCqldV4OyOVbgzluFvri4PtY=",
+  "Source": "VirtuoInventory.Api",
+  "BasePath": "_content/VirtuoInventory.Api",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],

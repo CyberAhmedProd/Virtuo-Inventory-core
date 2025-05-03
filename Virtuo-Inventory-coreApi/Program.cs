@@ -1,5 +1,5 @@
-using AuthDemo.Infrastructure;
-using AuthDemoApi.Helper;
+using VirtuoInventory.Infrastructure;
+using VirtuoInventory.Api.Helper;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35004.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virtuo-Inventory-core.Api", "Virtuo-Inventory-coreApi\Virtuo-Inventory-core.Api.csproj", "{9A706BE3-DF36-42F4-B4F9-A24FA92DDE1E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtuoInventory.Api", "Virtuo-Inventory-coreApi\VirtuoInventory.Api.csproj", "{9A706BE3-DF36-42F4-B4F9-A24FA92DDE1E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virtuo-Inventory-core.Application", "Virtuo-Inventory-core.Application\Virtuo-Inventory-core.Application.csproj", "{F2A0BA95-9531-4695-B9A6-DB08931A4748}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtuoInventory.Application", "Virtuo-Inventory-core.Application\VirtuoInventory.Application.csproj", "{F2A0BA95-9531-4695-B9A6-DB08931A4748}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virtuo-Inventory-core.Core", "Virtuo-Inventory-core.Core\Virtuo-Inventory-core.Core.csproj", "{4AF7F8AB-32E3-4312-B600-4FB7060115A0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtuoInventory.Core", "Virtuo-Inventory-core.Core\VirtuoInventory.Core.csproj", "{4AF7F8AB-32E3-4312-B600-4FB7060115A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virtuo-Inventory-core.Infrastructure", "Virtuo-Inventory-core.Infrastructure\Virtuo-Inventory-core.Infrastructure.csproj", "{3D4B4C46-5B51-46BC-992F-D9D007AF27CD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtuoInventory.Infrastructure", "Virtuo-Inventory-core.Infrastructure\VirtuoInventory.Infrastructure.csproj", "{3D4B4C46-5B51-46BC-992F-D9D007AF27CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

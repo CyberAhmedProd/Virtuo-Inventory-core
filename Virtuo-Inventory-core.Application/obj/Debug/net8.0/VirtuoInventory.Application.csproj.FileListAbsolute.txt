@@ -1,0 +1,16 @@
+C:\Users\SBS\Desktop\MyProd\Virtuo-Inventory-core\Virtuo-Inventory-core.Application\bin\Debug\net8.0\VirtuoInventory.Application.deps.json
+C:\Users\SBS\Desktop\MyProd\Virtuo-Inventory-core\Virtuo-Inventory-core.Application\bin\Debug\net8.0\VirtuoInventory.Application.dll
+C:\Users\SBS\Desktop\MyProd\Virtuo-Inventory-core\Virtuo-Inventory-core.Application\bin\Debug\net8.0\VirtuoInventory.Application.pdb
+C:\Users\SBS\Desktop\MyProd\Virtuo-Inventory-core\Virtuo-Inventory-core.Application\bin\Debug\net8.0\VirtuoInventory.Core.dll
+C:\Users\SBS\Desktop\MyProd\Virtuo-Inventory-core\Virtuo-Inventory-core.Application\bin\Debug\net8.0\VirtuoInventory.Core.pdb
+C:\Users\SBS\Desktop\MyProd\Virtuo-Inventory-core\Virtuo-Inventory-core.Application\obj\Debug\net8.0\VirtuoInventory.Application.csproj.AssemblyReference.cache
+C:\Users\SBS\Desktop\MyProd\Virtuo-Inventory-core\Virtuo-Inventory-core.Application\obj\Debug\net8.0\VirtuoInventory.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\SBS\Desktop\MyProd\Virtuo-Inventory-core\Virtuo-Inventory-core.Application\obj\Debug\net8.0\VirtuoInventory.Application.AssemblyInfoInputs.cache
+C:\Users\SBS\Desktop\MyProd\Virtuo-Inventory-core\Virtuo-Inventory-core.Application\obj\Debug\net8.0\VirtuoInventory.Application.AssemblyInfo.cs
+C:\Users\SBS\Desktop\MyProd\Virtuo-Inventory-core\Virtuo-Inventory-core.Application\obj\Debug\net8.0\VirtuoInventory.Application.csproj.CoreCompileInputs.cache
+C:\Users\SBS\Desktop\MyProd\Virtuo-Inventory-core\Virtuo-Inventory-core.Application\obj\Debug\net8.0\VirtuoInventory.Application.sourcelink.json
+C:\Users\SBS\Desktop\MyProd\Virtuo-Inventory-core\Virtuo-Inventory-core.Application\obj\Debug\net8.0\VirtuoIn.47FAA1D9.Up2Date
+C:\Users\SBS\Desktop\MyProd\Virtuo-Inventory-core\Virtuo-Inventory-core.Application\obj\Debug\net8.0\VirtuoInventory.Application.dll
+C:\Users\SBS\Desktop\MyProd\Virtuo-Inventory-core\Virtuo-Inventory-core.Application\obj\Debug\net8.0\refint\VirtuoInventory.Application.dll
+C:\Users\SBS\Desktop\MyProd\Virtuo-Inventory-core\Virtuo-Inventory-core.Application\obj\Debug\net8.0\VirtuoInventory.Application.pdb
+C:\Users\SBS\Desktop\MyProd\Virtuo-Inventory-core\Virtuo-Inventory-core.Application\obj\Debug\net8.0\ref\VirtuoInventory.Application.dll

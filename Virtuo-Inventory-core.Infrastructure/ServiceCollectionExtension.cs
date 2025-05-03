@@ -1,8 +1,8 @@
-﻿using AuthDemo.Application.Interfaces;
-using AuthDemo.Infrastructure.Repository;
+﻿using VirtuoInventory.Application.Interfaces;
+using VirtuoInventory.Infrastructure.Repository;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace AuthDemo.Infrastructure
+namespace VirtuoInventory.Infrastructure
 {
     public static class ServiceCollectionExtension
     {

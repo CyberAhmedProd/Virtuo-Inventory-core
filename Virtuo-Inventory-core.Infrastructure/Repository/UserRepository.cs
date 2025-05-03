@@ -1,12 +1,12 @@
-﻿using AuthDemo.Application.Interfaces;
-using AuthDemo.Core.Entities;
-using AuthDemo.Infrastructure.Sql;
+﻿using VirtuoInventory.Application.Interfaces;
+using VirtuoInventory.Core.Entities;
+using VirtuoInventory.Infrastructure.Sql;
 using Dapper;
 using Microsoft.Extensions.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace AuthDemo.Infrastructure.Repository
+namespace VirtuoInventory.Infrastructure.Repository
 {
     public class UserRepository : IUserRepository
     {
@@ -37,7 +37,7 @@ namespace AuthDemo.Infrastructure.Repository
             catch (Exception ex)
             {
                 // Log the exception or handle it as needed
-                throw new Exception("An error occurred while retrieving all users.", ex);
+                throw new Exception(ex.Message);
             }
         }
 
@@ -55,7 +55,7 @@ namespace AuthDemo.Infrastructure.Repository
             catch (Exception ex)
             {
                 // Log the exception or handle it as needed
-                throw new Exception($"An error occurred while retrieving the user with ID {id}.", ex);
+                throw new Exception(ex.Message);
             }
         }
 
@@ -74,7 +74,7 @@ namespace AuthDemo.Infrastructure.Repository
             catch (Exception ex)
             {
                 // Log the exception or handle it as needed
-                throw new Exception("An error occurred while authenticating the user.", ex);
+                throw new Exception(ex.Message);
             }
         }
 
@@ -84,6 +84,13 @@ namespace AuthDemo.Infrastructure.Repository
             {
                 using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection")))
                 {
+                    // Check if the username is unique
+                    bool isUnique = await IsUniqueUserName(user.Username);
+                    if (!isUnique)
+                    {
+                        throw new Exception("The username is already taken. Please choose a different username.");
+                    }
+
                     var result = await connection.ExecuteScalarAsync<int>(UserQuery.InsertUser, user);
 
                     return result; // Return the inserted user's ID as an integer
@@ -92,10 +99,75 @@ namespace AuthDemo.Infrastructure.Repository
             catch (Exception ex)
             {
                 // Log the exception or handle it as needed
-                throw new Exception("An error occurred while inserting the user.", ex);
+                throw new Exception(ex.Message);
+            }
+        }
+        public async Task<bool> UpdateUser(User user)
+        {
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection")))
+                {
+                    var rowsAffected = await connection.ExecuteAsync(UserQuery.UpdateUser, user);
+                    return rowsAffected > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception or handle it as needed
+                throw new Exception(ex.Message);
             }
         }
 
+        public async Task<bool> UpdateUserPassword(int id, string newPassword)
+        {
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection")))
+                {
+                    var rowsAffected = await connection.ExecuteAsync(UserQuery.UpdateUserPassword, new { Id = id, Password = newPassword });
+                    return rowsAffected > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception or handle it as needed
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<bool> DeleteUser(int id)
+        {
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection")))
+                {
+                    var rowsAffected = await connection.ExecuteAsync(UserQuery.DeleteUser, new { Id = id });
+                    return rowsAffected > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception or handle it as needed
+                throw new Exception(ex.Message);
+            }
+        }
+        private async Task<bool> IsUniqueUserName(string username)
+        {
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection")))
+                {
+                    var count = await connection.ExecuteScalarAsync<int>(UserQuery.CheckUserNameUnicity, new { UserName = username });
+                    return count == 0; // Returns true if the username is unique
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception or handle it as needed
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
     }
 }

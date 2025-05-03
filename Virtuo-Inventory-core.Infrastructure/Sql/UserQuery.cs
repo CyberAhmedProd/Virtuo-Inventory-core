@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AuthDemo.Infrastructure.Sql
+﻿
+namespace VirtuoInventory.Infrastructure.Sql
 {
     class UserQuery
     {
@@ -26,6 +21,31 @@ namespace AuthDemo.Infrastructure.Sql
             @"INSERT INTO [dbo].[User] ([FirstName], [LastName], [UserName],[Password],[Role]) 
             OUTPUT INSERTED.[Id]
             VALUES (@FirstName, @LastName, @UserName, @Password, @Role)";
+        //Update User
+        public static string UpdateUser =>
+            @"UPDATE [dbo].[User]
+            SET [FirstName] = @FirstName, 
+                [LastName] = @LastName, 
+                [UserName] = @UserName, 
+                [Role] = @Role
+            WHERE [Id] = @Id";
+        //Update User Password
+        public static string UpdateUserPassword =>
+            @"UPDATE [dbo].[User]
+            SET [Password] = @Password
+            WHERE [Id] = @Id";
+        //Delete User
+        public static string DeleteUser =>
+            @"DELETE FROM [dbo].[User]
+            WHERE [Id] = @Id";
+
+        // Check Unicity
+        // Check Unicity of UserName
+        public static string CheckUserNameUnicity =>
+            @"SELECT COUNT(1)
+            FROM [dbo].[User]
+            WHERE [UserName] = @UserName";
+
     }
 }
 

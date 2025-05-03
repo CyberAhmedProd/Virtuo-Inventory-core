@@ -1,12 +1,12 @@
-using AuthDemo.Application.Interfaces;
-using AuthDemo.Core.Entities;
-using AuthDemoApi.Helper;
-using AuthDemoApi.Models;
+using VirtuoInventory.Application.Interfaces;
+using VirtuoInventory.Core.Entities;
+using VirtuoInventory.Api.Helper;
+using VirtuoInventory.Api.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using System.Data;
 
-namespace AuthDemoApi.Controllers
+namespace VirtuoInventory.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -37,69 +37,153 @@ namespace AuthDemoApi.Controllers
         [HttpPost("Authenticate")]
         public async Task<IActionResult> Authenticate(AuthenticateRequest model)
         {
-            var user = await _unitOfWork.Users.AuthenticateUser(model.Username, model.Password);
-
-            if (user == null)
-                return BadRequest(new { message = "Username or password is incorrect" });
-
-            var token = Common.GenerateJwtToken(user, _appSettings);
-
-            var response = new AuthenticateResponse
+            try
             {
-                Id = user.Id,
-                Username = user.Username,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                Token = token,
-            };
+                var hashPassword = Common.HashPassword(model.Password);
+                var user = await _unitOfWork.Users.AuthenticateUser(model.Username, hashPassword);
 
-            return Ok(response);
+                if (user == null)
+                    return BadRequest(new { message = "Username or password is incorrect" });
+
+                var token = Common.GenerateJwtToken(user, _appSettings);
+
+                var response = new AuthenticateResponse
+                {
+                    Id = user.Id,
+                    Username = user.Username,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Token = token,
+                };
+
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "An error occurred while authenticating the user.", error = ex.Message });
+            }
         }
 
         [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            // Check if the "User" object exists in HttpContext.Items and is not null
-            if (!HttpContext.Items.TryGetValue("User", out var userObj) || userObj is not User user)
+            try
             {
-                return Unauthorized(new { message = "You are not authorized to access this resource." });
-            }
+                if (!HttpContext.Items.TryGetValue("User", out var userObj) || userObj is not User user)
+                {
+                    return Unauthorized(new { message = "You are not authorized to access this resource." });
+                }
 
-            // Ensure the "User" object has the required Role property
-            if (user.Role != "Admin")
+                if (user.Role != "Admin")
+                {
+                    return Unauthorized(new { message = "You are not authorized to access this resource." });
+                }
+
+                var users = await _unitOfWork.Users.GetAll();
+                return Ok(users);
+            }
+            catch (Exception ex)
             {
-                return Unauthorized(new { message = "You are not authorized to access this resource." });
+                return StatusCode(500, new { message = "An error occurred while retrieving users.", error = ex.Message });
             }
-
-            var users = await _unitOfWork.Users.GetAll();
-            return Ok(users);
         }
         [HttpPost("InsertUser")]
         public async Task<IActionResult> InsertUser(AddUserRequest model)
         {
-            // Validate the request model
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            // Create a new User entity
-            var newUser = new User
+            try
             {
-                Username = model.Username,
-                Password = model.Password, // Ensure password is hashed in a real-world scenario
-                FirstName = model.FirstName,
-                LastName = model.LastName,
-                Role = model.Role
-            };
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState);
 
-            // Add the user to the repository
-            var IdInserted = await _unitOfWork.Users.InsertUser(newUser);
-            var user = await _unitOfWork.Users.GetById(IdInserted);
+                var newUser = new User
+                {
+                    Username = model.Username,
+                    Password = Common.HashPassword(model.Password),
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Role = model.Role
+                };
 
-            if (user == null)
-                return StatusCode(500, new { message = "An error occurred while adding the user." });
+                var IdInserted = await _unitOfWork.Users.InsertUser(newUser);
+                var user = await _unitOfWork.Users.GetById(IdInserted);
 
-            return Ok(new { message = "User added successfully.", UserId = user.Id });
+                if (user == null)
+                    return StatusCode(500, new { message = "An error occurred while adding the user." });
+
+                return Ok(new { message = "User added successfully.", UserId = user.Id });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "An error occurred while inserting the user.", error = ex.Message });
+            }
+        }
+        [HttpPut("UpdateUser")]
+        public async Task<IActionResult> UpdateUser(UpdateUserRequest model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState);
+
+                var user = await _unitOfWork.Users.GetById(model.Id);
+                if (user == null)
+                    return NotFound(new { message = "User not found." });
+
+                user.FirstName = model.FirstName;
+                user.LastName = model.LastName;
+                user.Username = model.Username;
+                user.Role = model.Role;
+
+                var isUpdated = await _unitOfWork.Users.UpdateUser(user);
+                if (!isUpdated)
+                    return StatusCode(500, new { message = "An error occurred while updating the user." });
+
+                return Ok(new { message = "User updated successfully." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "An error occurred while updating the user.", error = ex.Message });
+            }
+        }
+
+        [HttpPut("UpdateUserPassword/{id}")]
+        public async Task<IActionResult> UpdateUserPassword(int id, UpdatePasswordRequest model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState);
+
+                var hashedPassword = Common.HashPassword(model.NewPassword);
+
+                var isUpdated = await _unitOfWork.Users.UpdateUserPassword(id, hashedPassword);
+                if (!isUpdated)
+                    return StatusCode(500, new { message = "An error occurred while updating the password." });
+
+                return Ok(new { message = "Password updated successfully." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "An error occurred while updating the password.", error = ex.Message });
+            }
+        }
+
+        [HttpDelete("DeleteUser/{id}")]
+        public async Task<IActionResult> DeleteUser(int id)
+        {
+            try
+            {
+                var isDeleted = await _unitOfWork.Users.DeleteUser(id);
+                if (!isDeleted)
+                    return StatusCode(500, new { message = "An error occurred while deleting the user." });
+
+                return Ok(new { message = "User deleted successfully." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "An error occurred while deleting the user.", error = ex.Message });
+            }
         }
         #endregion
     }

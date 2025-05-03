@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace AuthDemo.Core.Entities
+namespace VirtuoInventory.Core.Entities
 {
     public class User
     {

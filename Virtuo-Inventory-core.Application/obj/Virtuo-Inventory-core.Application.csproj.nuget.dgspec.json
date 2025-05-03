@@ -32,8 +32,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\SBS\\Desktop\\MyProd\\Virtuo-Inventory-core\\Virtuo-Inventory-core.Core\\Virtuo-Inventory-core.Core.csproj": {
-                "projectPath": "C:\\Users\\SBS\\Desktop\\MyProd\\Virtuo-Inventory-core\\Virtuo-Inventory-core.Core\\Virtuo-Inventory-core.Core.csproj"
+              "C:\\Users\\SBS\\Desktop\\MyProd\\Virtuo-Inventory-core\\Virtuo-Inventory-core.Core\\VirtuoInventory.Core.csproj": {
+                "projectPath": "C:\\Users\\SBS\\Desktop\\MyProd\\Virtuo-Inventory-core\\Virtuo-Inventory-core.Core\\VirtuoInventory.Core.csproj"
               }
             }
           }
@@ -73,12 +73,12 @@
         }
       }
     },
-    "C:\\Users\\SBS\\Desktop\\MyProd\\Virtuo-Inventory-core\\Virtuo-Inventory-core.Core\\Virtuo-Inventory-core.Core.csproj": {
+    "C:\\Users\\SBS\\Desktop\\MyProd\\Virtuo-Inventory-core\\Virtuo-Inventory-core.Core\\VirtuoInventory.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\SBS\\Desktop\\MyProd\\Virtuo-Inventory-core\\Virtuo-Inventory-core.Core\\Virtuo-Inventory-core.Core.csproj",
-        "projectName": "Virtuo-Inventory-core.Core",
-        "projectPath": "C:\\Users\\SBS\\Desktop\\MyProd\\Virtuo-Inventory-core\\Virtuo-Inventory-core.Core\\Virtuo-Inventory-core.Core.csproj",
+        "projectUniqueName": "C:\\Users\\SBS\\Desktop\\MyProd\\Virtuo-Inventory-core\\Virtuo-Inventory-core.Core\\VirtuoInventory.Core.csproj",
+        "projectName": "VirtuoInventory.Core",
+        "projectPath": "C:\\Users\\SBS\\Desktop\\MyProd\\Virtuo-Inventory-core\\Virtuo-Inventory-core.Core\\VirtuoInventory.Core.csproj",
         "packagesPath": "C:\\Users\\SBS\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\SBS\\Desktop\\MyProd\\Virtuo-Inventory-core\\Virtuo-Inventory-core.Core\\obj\\",
         "projectStyle": "PackageReference",

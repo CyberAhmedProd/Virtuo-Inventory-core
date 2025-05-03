@@ -1,4 +1,4 @@
-﻿namespace AuthDemoApi.Helper
+﻿namespace VirtuoInventory.Api.Helper
 {
     public class AppSettings
     {

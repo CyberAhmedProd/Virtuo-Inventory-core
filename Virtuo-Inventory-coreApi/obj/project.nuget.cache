@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "O5+JkcOANNI=",
+  "dgSpecHash": "lDF2z2nDw9g=",
   "success": true,
-  "projectFilePath": "C:\\Users\\SBS\\Desktop\\MyProd\\Virtuo-Inventory-core\\Virtuo-Inventory-coreApi\\Virtuo-Inventory-core.Api.csproj",
+  "projectFilePath": "C:\\Users\\SBS\\Desktop\\MyProd\\Virtuo-Inventory-core\\Virtuo-Inventory-coreApi\\VirtuoInventory.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\SBS\\.nuget\\packages\\dapper\\2.1.35\\dapper.2.1.35.nupkg.sha512",
     "C:\\Users\\SBS\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.6\\microsoft.aspnetcore.authentication.jwtbearer.8.0.6.nupkg.sha512",
