@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "9f/rnEBI5HQXippXRuwyBvSIwkBv6NCseYR0nBWhid0=",
+  "Source": "Virtuo-Inventory-core.Api",
+  "BasePath": "_content/Virtuo-Inventory-core.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

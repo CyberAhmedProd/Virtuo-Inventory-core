@@ -1,0 +1,44 @@
+[
+  {
+    "ContainingType": "AuthDemoApi.Controllers.UsersController",
+    "Method": "GetAll",
+    "RelativePath": "Users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthDemoApi.Controllers.UsersController",
+    "Method": "Authenticate",
+    "RelativePath": "Users/Authenticate",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "AuthDemoApi.Models.AuthenticateRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthDemoApi.Controllers.UsersController",
+    "Method": "InsertUser",
+    "RelativePath": "Users/InsertUser",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "AuthDemoApi.Models.AddUserRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

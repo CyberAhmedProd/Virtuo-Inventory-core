@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\Virtuo-Inventory-core.Api.props" />
+</Project>
