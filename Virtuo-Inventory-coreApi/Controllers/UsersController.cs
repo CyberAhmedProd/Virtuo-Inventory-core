@@ -4,7 +4,6 @@ using VirtuoInventory.Api.Helper;
 using VirtuoInventory.Api.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using System.Data;
 
 namespace VirtuoInventory.Api.Controllers
 {
@@ -39,11 +38,12 @@ namespace VirtuoInventory.Api.Controllers
         {
             try
             {
-                var hashPassword = Common.HashPassword(model.Password);
-                var user = await _unitOfWork.Users.AuthenticateUser(model.Username, hashPassword);
-
+                var user = await _unitOfWork.Users.AuthenticateUser(model.Username);
                 if (user == null)
                     return BadRequest(new { message = "Username or password is incorrect" });
+                if (!Common.VerifyHashedPassword(model.Password, user.Password))
+                    return BadRequest(new { message = "password is incorrect" });
+
 
                 var token = Common.GenerateJwtToken(user, _appSettings);
 
@@ -102,7 +102,7 @@ namespace VirtuoInventory.Api.Controllers
                     Password = Common.HashPassword(model.Password),
                     FirstName = model.FirstName,
                     LastName = model.LastName,
-                    Role = model.Role
+                    Role = model.Role.ToString()
                 };
 
                 var IdInserted = await _unitOfWork.Users.InsertUser(newUser);

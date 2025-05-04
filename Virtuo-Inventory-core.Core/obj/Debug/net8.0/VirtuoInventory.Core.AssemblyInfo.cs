@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VirtuoInventory.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6c7e55e958ed1202b07d0247824986cbb653105c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4bb12afee03a6f4ececefd1afb7837818bc0bcbc")]
 [assembly: System.Reflection.AssemblyProductAttribute("VirtuoInventory.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VirtuoInventory.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

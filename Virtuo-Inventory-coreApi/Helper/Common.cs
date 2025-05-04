@@ -46,11 +46,13 @@ namespace VirtuoInventory.Api.Helper
         /// <returns>The hashed password as a Base64 string.</returns>
         public static string HashPassword(string password)
         {
-            using (var hmac = new HMACSHA256())
+            string secret = "Don't touch my code plz"; // Add your secret key here
+            using (var sha256 = SHA256.Create())
             {
-                var passwordBytes = Encoding.UTF8.GetBytes(password);
-                var hashedBytes = hmac.ComputeHash(passwordBytes);
-                return Convert.ToBase64String(hashedBytes);
+                var combinedPassword = password + secret;
+                var bytes = Encoding.UTF8.GetBytes(combinedPassword);
+                var hash = sha256.ComputeHash(bytes);
+                return Convert.ToBase64String(hash);
             }
         }
 

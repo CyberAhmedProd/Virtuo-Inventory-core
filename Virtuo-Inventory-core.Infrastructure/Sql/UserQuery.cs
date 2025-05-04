@@ -11,10 +11,9 @@ namespace VirtuoInventory.Infrastructure.Sql
 
         //Authenticate User
         public static string AuthenticateUser =>
-            @"SELECT [Id], [FirstName], [LastName], [UserName],[Role]
+            @"SELECT [Id],[Password], [FirstName], [LastName], [UserName],[Role]
 			FROM [dbo].[User]
-			WHERE [UserName] = @UserName
-			AND [Password] = @Password";
+			WHERE [UserName] = @UserName";
 
         //Add User
         public static string InsertUser => 

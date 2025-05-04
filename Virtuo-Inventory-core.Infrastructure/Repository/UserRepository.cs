@@ -59,14 +59,14 @@ namespace VirtuoInventory.Infrastructure.Repository
             }
         }
 
-        public async Task<User?> AuthenticateUser(string username, string password) // Updated return type to User? to handle nullability
+        public async Task<User?> AuthenticateUser(string username) // Updated return type to User? to handle nullability
         {
             try
             {
                 using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection")))
                 {
                     var user = (await connection.QueryAsync<User>(UserQuery.AuthenticateUser
-                        , new { UserName = username, Password = password })).FirstOrDefault();
+                        , new { UserName = username })).FirstOrDefault();
 
                     return user;
                 }
